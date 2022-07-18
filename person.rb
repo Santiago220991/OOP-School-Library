@@ -16,10 +16,11 @@ class Person
   end
 
   def of_age?
-    return true if @age >= 18
-
-    false
+    @age >= 18
   end
 
   private :of_age?
 end
+
+p persona=Person.new(12, parent_permission: false)
+p persona.can_use_services?
