@@ -1,6 +1,7 @@
 require "./nameable"
 require "./decorator"
 require "./capitalize_decorator"
+require "./trimmer_decorator"
 
 class Person < Nameable
   attr_accessor :name, :age
@@ -29,9 +30,3 @@ class Person < Nameable
 
   private :of_age?
 end
-
-
-p person = Person.new(22, 'maximilianus')
-p person.correct_name
-p capitalizedPerson = CapitalizeDecorator.new(person)
-p capitalizedPerson.correct_name
