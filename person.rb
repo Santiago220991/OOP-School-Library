@@ -21,11 +21,6 @@ class Person
     false
   end
 
-  private :is_of_age?
+  private :of_age?
 end
 
-person = Person.new(age: 20)
-p person
-person.name = 'Andres'
-person.age = 21
-p person
