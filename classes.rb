@@ -35,4 +35,16 @@ class Student < Person
 
 end
 
+class Teacher < Person
+    def initialize(specialization:, **parameters)
+        super(**parameters)
+        @specialization=specialization
+    end
+    
+    def can_use_services?
+        true
+    end
+end
 
+profe=Teacher.new(specialization:"maths", age:60)
+p profe.can_use_services?
