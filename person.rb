@@ -22,5 +22,5 @@ class Person
   private :of_age?
 end
 
-p persona=Person.new(12, parent_permission: false)
+p persona = Person.new(12, parent_permission: false)
 p persona.can_use_services?
