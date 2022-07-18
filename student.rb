@@ -1,8 +1,8 @@
 require './person'
 
 class Student < Person
-  def initialize(classroom:, **parameters)
-    super(**parameters)
+  def initialize(classroom, *parameters)
+    super(*parameters)
     @classroom = classroom
   end
 
@@ -10,3 +10,4 @@ class Student < Person
     "¯\(ツ)/¯"
   end
 end
+
