@@ -35,7 +35,9 @@ cd OOP-School-Library
 Type these commands into the terminal:
 
 ```
-ruby morse_code.rb
+irb person.rb
+irb student.rb
+irb teacher.rb
 ```
 
 ## Authors
