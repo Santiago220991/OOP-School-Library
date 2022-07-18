@@ -23,4 +23,3 @@ class Person
 
   private :of_age?
 end
-
