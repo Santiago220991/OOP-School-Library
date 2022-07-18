@@ -1,5 +1,3 @@
-# Main class
-
 class Person
   attr_accessor :name, :age
   attr_reader :id
@@ -17,7 +15,7 @@ class Person
     false
   end
 
-  def is_of_age?
+  def of_age?
     return true if @age >= 18
 
     false

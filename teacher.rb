@@ -1,5 +1,3 @@
-# class Teacher inherits from class Person
-
 require './person'
 
 class Teacher < Person
