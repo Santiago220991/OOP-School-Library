@@ -2,7 +2,7 @@ class Person
     attr_reader :id, :name, :age
     attr_writer :name, :age
     
-    def initialize(name:"Unknow",age:,parent_permission:true)
+    def initialize(age:, parent_permission:true, name:"Unknow")
         @id=rand(1..100)
         @name=name
         @age=age
@@ -21,4 +21,18 @@ class Person
 
     private :is_of_age?
 end
+
+class Student < Person
+
+    def initialize (classroom:, **parameters)
+        super(**parameters)
+        @classroom=classroom
+    end
+    
+    def play_hooky
+        "¯\(ツ)/¯"
+    end
+
+end
+
 
