@@ -10,7 +10,7 @@ class Person
   end
 
   def can_use_services?
-    return true if of_age? || @parent_permission == true
+    return true if of_age? || @parent_permission
 
     false
   end
@@ -21,6 +21,3 @@ class Person
 
   private :of_age?
 end
-
-p persona = Person.new(12, parent_permission: false)
-p persona.can_use_services?
