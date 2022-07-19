@@ -9,4 +9,6 @@ class Book
     def add_rental(date, person)
         rental=Rental.new(person, self, date)
         @rentals << rental unless @rentals.include?(rental)
+
+    end
 end
