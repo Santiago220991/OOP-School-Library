@@ -1,4 +1,11 @@
 require './app'
+require './nameable'
+require './person'
+require './book'
+require './student'
+require './teacher'
+require './rental'
+
 def main
     app=App.new()
     exit=0
