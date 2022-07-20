@@ -11,7 +11,7 @@ module Builders
         else
             permission=false
         end
-        return {age:age, name:name, permission:permission}
+        {age:age, name:name, permission:permission}
     end
 
     def create_teacher(value)
@@ -21,7 +21,14 @@ module Builders
         name=gets.chomp
         print "Insert Specialization: \s"
         specialization=gets.chomp
-        return {age:age, name:name, specialization:specialization}
+        {age:age, name:name, specialization:specialization}
     end
 
+    def create_book()
+        print "Insert title: \s"
+        title=gets.chomp
+        print "Inser author: \s"
+        author=gets.chomp
+        {title: title, author: author}
+    end
 end

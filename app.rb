@@ -32,7 +32,9 @@ class App
                 people << teacher
             end
         when 4
-            puts "opcion 4"
+            data=create_book()
+            book=Book.new(data[:title], data[:author])
+            books<<book
         when 5
             puts "opcion 5"
         when 6
