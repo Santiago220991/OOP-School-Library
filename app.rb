@@ -11,6 +11,7 @@ class App
     def initialize()
         @people=[]
         @books=[]
+        @rentals=[]
     end
 
     def select_option(option)
@@ -25,12 +26,12 @@ class App
             if(value=="1")
                 data = create_student(value)
                 student = Student.new(classroom:nil, age:data[:age], name:data[:name],  parent_permission: data[:permission])
-                people << student
+                @people << student
                 print "Person created succesfully"
             elsif(value=="2")
                 data = create_teacher(value)
                 teacher = Teacher.new(specialization: data[:specialization], age:data[:age], name:data[:name],  parent_permission: data[:permission])
-                people << teacher
+                @people << teacher
                 print "Person created succesfully"
             else
                 puts "Invalid option"
@@ -38,12 +39,14 @@ class App
         when 4
             data = create_book()
             book = Book.new(data[:title], data[:author])
-            books << book
+            @books << book
             print "Book created succesfully"
         when 5
-            puts "opcion 5"
+            data=create_rental(books,people)
+            rental=Rental.new(people[data[:person_num]], books[data[:book_num]], data[:date])
+            @rentals << rental
         when 6
-            puts "opcion6"
+            
         when 7
             puts "Thanks for using the app"
         else 

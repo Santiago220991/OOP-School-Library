@@ -43,4 +43,16 @@ module Builders
             puts "#{index}) [#{person.class.name}] Name: #{person.name} ID: #{person.id} Age: #{person.age}"
         end
     end
+
+    def create_rental(books,people)
+        list_of_books(books)
+        print ("Select by number one of the books listed (not id)")
+        book_num=gets.chomp.to_i
+        list_of_people(people)
+        print ("Select by number one of the people listed (not id)")
+        person_num=gets.chomp.to_i
+        print ("Insert a date")
+        date=gets.chomp
+        {book_num: book_num, person_num: person_num, date: date} 
+    end
 end
