@@ -61,7 +61,7 @@ module Builders
         id=gets.chomp.to_i
         print ("Rentals:\n")
         rented.map do |rental|
-            puts '#{rental.date}, "#{rental.book.title}" by #{rental.book.author}" if rental.person.id==id'
+            puts "#{rental.date}, \"#{rental.book.title}\" by #{rental.book.author}" if rental.person.id==id
         end
     end
 end
