@@ -1,10 +1,10 @@
 require './app'
 
 def main
-    app=App.new()
-    exit=0
-    print("Welcome to School Library App!")
-    while(exit==0)
+  app = App.new
+  exit = 0
+  print('Welcome to School Library App!')
+  while exit.zero?
     print("
 
         Please choose an option by entering a number:
@@ -12,16 +12,14 @@ def main
         2 - List all people
         3 - Create a person
         4 - Create a book
-        5 - Create a rental 
+        5 - Create a rental
         6 - List all rentals for a given person id
         7 - Exit
             ")
-        option=gets.chomp.to_i
+    option = gets.chomp.to_i
 
-        if option==7
-            exit=1
-        end
-        app.select_option(option)
-    end
+    exit = 1 if option == 7
+    app.select_option(option)
+  end
 end
-main()
+main
