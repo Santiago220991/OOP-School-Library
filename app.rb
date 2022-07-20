@@ -27,12 +27,12 @@ class App
                 data = create_student(value)
                 student = Student.new(classroom:nil, age:data[:age], name:data[:name],  parent_permission: data[:permission])
                 @people << student
-                print "Person created succesfully"
+                print "Person created successfully"
             elsif(value=="2")
                 data = create_teacher(value)
                 teacher = Teacher.new(specialization: data[:specialization], age:data[:age], name:data[:name],  parent_permission: data[:permission])
                 @people << teacher
-                print "Person created succesfully"
+                print "Person created successfully"
             else
                 puts "Invalid option"
             end
@@ -40,11 +40,12 @@ class App
             data = create_book()
             book = Book.new(data[:title], data[:author])
             @books << book
-            print "Book created succesfully"
+            print "Book created successfully"
         when 5
             data=create_rental(books,people)
             rental=Rental.new(people[data[:person_num]], books[data[:book_num]], data[:date])
             @rented << rental
+            print "Rental created successfully"
         when 6
             list_of_rentals(rented)
         when 7

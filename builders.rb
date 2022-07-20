@@ -27,7 +27,7 @@ module Builders
     def create_book()
         print "Insert title: \s"
         title=gets.chomp
-        print "Inser author: \s"
+        print "Insert author: \s"
         author=gets.chomp
         {title: title, author: author}
     end
