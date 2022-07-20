@@ -7,11 +7,11 @@ require './builders'
 
 class App
     include Builders
-    attr_accessor :people, :books
+    attr_accessor :people, :books, :rented
     def initialize()
         @people=[]
         @books=[]
-        @rentals=[]
+        @rented=[]
     end
 
     def select_option(option)
@@ -44,9 +44,9 @@ class App
         when 5
             data=create_rental(books,people)
             rental=Rental.new(people[data[:person_num]], books[data[:book_num]], data[:date])
-            @rentals << rental
+            @rented << rental
         when 6
-            
+            list_of_rentals(rented, people)
         when 7
             puts "Thanks for using the app"
         else 

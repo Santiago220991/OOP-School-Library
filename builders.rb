@@ -46,13 +46,22 @@ module Builders
 
     def create_rental(books,people)
         list_of_books(books)
-        print ("Select by number one of the books listed (not id)")
+        print ("Select by number one of the books listed (not id) \s")
         book_num=gets.chomp.to_i
         list_of_people(people)
-        print ("Select by number one of the people listed (not id)")
+        print ("Select by number one of the people listed (not id) \s")
         person_num=gets.chomp.to_i
-        print ("Insert a date")
+        print ("Insert a date: \s")
         date=gets.chomp
         {book_num: book_num, person_num: person_num, date: date} 
+    end
+
+    def list_of_rentals(rented)
+        print ("Insert person ID: \s")
+        id=gets.chomp.to_i
+        print ("Rentals:\n")
+        rented.map do |rental|
+            puts "#{rental.date}, '#{rental.book.title}' by #{rental.book.author}" if rental.person.id==id
+        end
     end
 end
