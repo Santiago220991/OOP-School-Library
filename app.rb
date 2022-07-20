@@ -18,7 +18,7 @@ class App
         when 1
             list_of_books(books)
         when 2
-            print @people
+            list_of_people(people)
         when 3
             print  "Do you want to create a student (1) or a teacher (2)? [Input the number]:\s"
             value=gets.chomp
