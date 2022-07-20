@@ -46,7 +46,7 @@ class App
             rental=Rental.new(people[data[:person_num]], books[data[:book_num]], data[:date])
             @rented << rental
         when 6
-            list_of_rentals(rented, people)
+            list_of_rentals(rented)
         when 7
             puts "Thanks for using the app"
         else 
