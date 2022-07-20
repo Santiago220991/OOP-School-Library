@@ -31,4 +31,10 @@ module Builders
         author=gets.chomp
         {title: title, author: author}
     end
+
+    def list_of_books(books)
+        books.each_with_index do |book,index|
+            puts "#{index}) #{book.title} #{book.author}"
+        end
+    end
 end
