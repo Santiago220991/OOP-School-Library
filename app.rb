@@ -1,4 +1,12 @@
+require './person'
+require './book'
+require './student'
+require './teacher'
+require './rental'
+require './builders'
+
 class App
+    include Builders
     attr_accessor :people, :books
     def initialize()
         @people=[]
@@ -8,11 +16,21 @@ class App
     def select_option(option)
         case option
         when 1
-            puts "opcion 1"
+            print @books
         when 2
-            puts "opcion 2"
+            print @people
         when 3
-            puts "opcion 3"
+            print  "Do you want to create a student (S) or a teacher (T)? [Input the number]:\s"
+            value=gets.chomp.capitalize
+            if(value=="S")
+                data=create_student(value)
+                student=Student.new(classroom:nil, age:data[:age], name:data[:name],  parent_permission: data[:permission])
+                people << student
+            else
+                data=create_teacher(value)
+                teacher=Teacher.new(specialization: data[:specialization], age:data[:age], name:data[:name],  parent_permission: data[:permission])
+                people << teacher
+            end
         when 4
             puts "opcion 4"
         when 5

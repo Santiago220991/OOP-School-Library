@@ -1,16 +1,11 @@
 require './app'
-require './nameable'
-require './person'
-require './book'
-require './student'
-require './teacher'
-require './rental'
 
 def main
     app=App.new()
     exit=0
+    print("Welcome to School Library App!")
     while(exit==0)
-    print("Welcome to School Library App! 
+    print("
 
         Please choose an option by entering a number:
         1 - List all books
