@@ -25,13 +25,10 @@ class App
       data = create_person
       @people << data
     when 4
-      data = create_book
-      book = Book.new(data[:title], data[:author])
+      book = create_book
       @books << book
     when 5
-      data = create_rental(books, people)
-      rental = Rental.new(people[data[:person_num]], books[data[:book_num]], data[:date])
-      print 'Rental created succesfully'
+      rental = create_rental(books, people)
       @rented << rental
     when 6
       list_of_rentals(rented)

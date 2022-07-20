@@ -1,6 +1,9 @@
 require './student'
 require './person'
 require './teacher'
+require './book'
+require './rental'
+
 module Builders
   def create_person
     print "Do you want to create a student (1) or a teacher (2)? [Input the number]:\s"
@@ -49,7 +52,9 @@ module Builders
     title = gets.chomp
     print "Insert author: \s"
     author = gets.chomp
-    { title: title, author: author }
+    book = Book.new(title, author)
+    print 'Book created succesfully'
+    book
   end
 
   def list_of_books(books)
@@ -73,7 +78,9 @@ module Builders
     person_num = gets.chomp.to_i
     print("Insert a date [DD-MM-YYYY]: \s")
     date = gets.chomp
-    { book_num: book_num, person_num: person_num, date: date }
+    rental = Rental.new(people[person_num], books[book_num], date)
+    print 'Rental created succesfully'
+    rental
   end
 
   def list_of_rentals(rented)
