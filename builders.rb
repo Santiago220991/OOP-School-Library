@@ -59,7 +59,7 @@ module Builders
 
   def list_of_books(books)
     books.each_with_index do |book, index|
-      puts "#{index}) #{book.title} #{book.author}"
+      puts "#{index}) Title: #{book.title} Author: #{book.author}"
     end
   end
 
@@ -70,11 +70,11 @@ module Builders
   end
 
   def create_rental(books, people)
+    print("Select by number one of the books listed (not id) \s\n")
     list_of_books(books)
-    print("Select by number one of the books listed (not id) \s")
     book_num = gets.chomp.to_i
+    print("Select by number one of the people listed (not id) \s\n")
     list_of_people(people)
-    print("Select by number one of the people listed (not id) \s")
     person_num = gets.chomp.to_i
     print("Insert a date [DD-MM-YYYY]: \s")
     date = gets.chomp
@@ -88,7 +88,7 @@ module Builders
     id = gets.chomp.to_i
     print("Rentals:\n")
     rented.map do |rental|
-      puts "#{rental.date}, \"#{rental.book.title}\" by #{rental.book.author}" if rental.person.id == id
+      puts "#{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}" if rental.person.id == id
     end
   end
 end
