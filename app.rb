@@ -22,38 +22,19 @@ class App
     when 2
       list_of_people(people)
     when 3
-      print "Do you want to create a student (1) or a teacher (2)? [Input the number]:\s"
-      value = gets.chomp
-      case value
-      when '1'
-        data = create_student(value)
-        student = Student.new(classroom: nil, age: data[:age], name: data[:name],
-                              parent_permission: data[:permission])
-        @people << student
-        print 'Person created successfully'
-      when '2'
-        data = create_teacher(value)
-        teacher = Teacher.new(specialization: data[:specialization], age: data[:age], name: data[:name],
-                              parent_permission: data[:permission])
-        @people << teacher
-        print 'Person created successfully'
-      else
-        puts 'Invalid option'
-      end
+      data = create_person
+      @people << data
     when 4
       data = create_book
       book = Book.new(data[:title], data[:author])
       @books << book
-      print 'Book created successfully'
     when 5
       data = create_rental(books, people)
       rental = Rental.new(people[data[:person_num]], books[data[:book_num]], data[:date])
+      print 'Rental created succesfully'
       @rented << rental
-      print 'Rental created successfully'
     when 6
       list_of_rentals(rented)
-    when 7
-      puts 'Thanks for using the app'
     else
       puts 'invalid option'
     end

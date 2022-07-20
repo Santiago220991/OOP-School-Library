@@ -1,4 +1,28 @@
+require './student'
+require './person'
+require './teacher'
 module Builders
+  def create_person
+    print "Do you want to create a student (1) or a teacher (2)? [Input the number]:\s"
+    value = gets.chomp
+    case value
+    when '1'
+      data = create_student(value)
+      student = Student.new(classroom: nil, age: data[:age], name: data[:name],
+                            parent_permission: data[:permission])
+      print 'Person created successfully'
+      student
+    when '2'
+      data = create_teacher(value)
+      teacher = Teacher.new(specialization: data[:specialization], age: data[:age], name: data[:name],
+                            parent_permission: data[:permission])
+      print 'Person created successfully'
+      teacher
+    else
+      puts 'Invalid option'
+    end
+  end
+
   def create_student(_value)
     print "Insert Age:\s"
     age = gets.chomp.to_i
