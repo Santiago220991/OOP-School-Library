@@ -35,13 +35,7 @@ cd OOP-School-Library
 Type these commands into the terminal:
 
 ```
-irb nameable.rb
-irb person.rb
-irb student.rb
-irb teacher.rb
-irb decorator.rb
-irb capitalize_decorator.rb
-irb trimmer_decorator.rb
+ruby main.rb
 ```
 
 ## Authors
