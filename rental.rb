@@ -1,3 +1,4 @@
+
 class Rental
   attr_accessor :person, :date, :book
 
@@ -15,4 +16,9 @@ class Rental
       'a'             => [ @person.id, @book.title, @date ]
     }.to_json(*args)
   end 
+
+  def self.json_create(object)
+    {person_id:object['a'][0], book_title:object['a'][1], date:object['a'][2]}
+  end
+
 end

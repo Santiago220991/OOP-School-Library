@@ -13,7 +13,7 @@ class App
   def initialize()
     @people = File.exists?("./people.json") ? JSON.parse(File.read("./people.json"),create_additions: true):[]
     @books = File.exists?("./books.json") ? JSON.parse(File.read("./books.json"),create_additions: true):[]
-    @rented = []
+    @rented = File.exists?("./rentals.json") ? JSON.parse(File.read("./rentals.json"),create_additions: true).map{|rental| load_rental(rental)}:[]
   end
 
   def select_option(option)
@@ -42,5 +42,11 @@ class App
       File.write("books.json", JSON.generate(@books))
       File.write("people.json", JSON.generate(@people))
       File.write("rentals.json", JSON.generate(@rented))
+  end
+
+  def load_rental(rental)
+   person=@people.filter{|person| person.id==rental[:person_id]}.first
+   book=@books.filter{|book| book.title==rental[:book_title]}.first
+   Rental.new(person,book,rental[:date])
   end
 end
