@@ -10,15 +10,15 @@ module Builders
     value = gets.chomp
     case value
     when '1'
-      data = create_student(value)
+      data = create_student()
       student = Student.new(classroom: nil, age: data[:age], name: data[:name],
                             parent_permission: data[:permission])
       print 'Person created successfully'
       student
     when '2'
-      data = create_teacher(value)
+      data = create_teacher()
       teacher = Teacher.new(specialization: data[:specialization], age: data[:age], name: data[:name],
-                            parent_permission: data[:permission])
+                            parent_permission: true)
       print 'Person created successfully'
       teacher
     else
@@ -26,7 +26,7 @@ module Builders
     end
   end
 
-  def create_student(_value)
+  def create_student
     print "Insert Age:\s"
     age = gets.chomp.to_i
     print "Insert Name:\s"
@@ -37,7 +37,7 @@ module Builders
     { age: age, name: name, permission: permission }
   end
 
-  def create_teacher(_value)
+  def create_teacher
     print "Insert Age:\s"
     age = gets.chomp.to_i
     print "Insert Name:\s"
