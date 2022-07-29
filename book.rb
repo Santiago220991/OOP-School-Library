@@ -11,17 +11,17 @@ class Book
     rental = Rental.new(person, self, date)
     @rentals << rental unless @rentals.include?(rental)
   end
- 
+
   def to_json(*args)
     {
-      JSON.create_id  => self.class.name,
-      'a'             => [ title, author, rentals ]
+      JSON.create_id => self.class.name,
+      'a' => [title, author, rentals]
     }.to_json(*args)
   end
-  
+
   def self.json_create(object)
-    book=new(object['a'][0], object['a'][1])
-    book.rentals=object['a'][2]
+    book = new(object['a'][0], object['a'][1])
+    book.rentals = object['a'][2]
     book
   end
 end
