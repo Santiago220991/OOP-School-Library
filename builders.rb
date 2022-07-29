@@ -78,9 +78,13 @@ module Builders
     person_num = gets.chomp.to_i
     print("Insert a date [DD-MM-YYYY]: \s")
     date = gets.chomp
+    if((book_num <= books.length && book_num >=0)&&(person_num<=people.length && person_num>=0) )
     rental = Rental.new(people[person_num], books[book_num], date)
     print 'Rental created succesfully'
     rental
+    else
+      print ('Invalid book or person option')
+    end
   end
 
   def list_of_rentals(rented)
