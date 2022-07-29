@@ -10,15 +10,15 @@ module Builders
     value = gets.chomp
     case value
     when '1'
-      data = create_student(value)
+      data = create_student
       student = Student.new(classroom: nil, age: data[:age], name: data[:name],
                             parent_permission: data[:permission])
       print 'Person created successfully'
       student
     when '2'
-      data = create_teacher(value)
+      data = create_teacher
       teacher = Teacher.new(specialization: data[:specialization], age: data[:age], name: data[:name],
-                            parent_permission: data[:permission])
+                            parent_permission: true)
       print 'Person created successfully'
       teacher
     else
@@ -26,7 +26,7 @@ module Builders
     end
   end
 
-  def create_student(_value)
+  def create_student
     print "Insert Age:\s"
     age = gets.chomp.to_i
     print "Insert Name:\s"
@@ -37,7 +37,7 @@ module Builders
     { age: age, name: name, permission: permission }
   end
 
-  def create_teacher(_value)
+  def create_teacher
     print "Insert Age:\s"
     age = gets.chomp.to_i
     print "Insert Name:\s"
@@ -78,9 +78,13 @@ module Builders
     person_num = gets.chomp.to_i
     print("Insert a date [DD-MM-YYYY]: \s")
     date = gets.chomp
-    rental = Rental.new(people[person_num], books[book_num], date)
-    print 'Rental created succesfully'
-    rental
+    if (book_num <= books.length && book_num >= 0) && (person_num <= people.length && person_num >= 0)
+      rental = Rental.new(people[person_num], books[book_num], date)
+      print 'Rental created succesfully'
+      rental
+    else
+      print('Invalid book or person option')
+    end
   end
 
   def list_of_rentals(rented)
