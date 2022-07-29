@@ -11,9 +11,16 @@ class App
   attr_accessor :people, :books, :rented
 
   def initialize()
-    @people = File.exists?("./people.json") ? JSON.parse(File.read("./people.json"),create_additions: true):[]
-    @books = File.exists?("./books.json") ? JSON.parse(File.read("./books.json"),create_additions: true):[]
-    @rented = File.exists?("./rentals.json") ? JSON.parse(File.read("./rentals.json"),create_additions: true).map{|rental| load_rental(rental)}:[]
+    @people = File.exist?('./people.json') ? JSON.parse(File.read('./people.json'), create_additions: true) : []
+    @books = File.exist?('./books.json') ? JSON.parse(File.read('./books.json'), create_additions: true) : []
+    @rented = if File.exist?('./rentals.json')
+                JSON.parse(File.read('./rentals.json'),
+                           create_additions: true).map do |rental|
+                  load_rental(rental)
+                end
+              else
+                []
+              end
   end
 
   def select_option(option)
@@ -39,14 +46,14 @@ class App
   end
 
   def save_data
-      File.write("books.json", JSON.generate(@books))
-      File.write("people.json", JSON.generate(@people))
-      File.write("rentals.json", JSON.generate(@rented))
+    File.write('books.json', JSON.generate(@books))
+    File.write('people.json', JSON.generate(@people))
+    File.write('rentals.json', JSON.generate(@rented))
   end
 
   def load_rental(rental)
-   person=@people.filter{|person| person.id==rental[:person_id]}.first
-   book=@books.filter{|book| book.title==rental[:book_title]}.first
-   Rental.new(person,book,rental[:date])
+    person = @people.filter { |per| per.id == rental[:person_id] }.first
+    book = @books.filter { |b| b.title == rental[:book_title] }.first
+    Rental.new(person, book, rental[:date])
   end
 end
